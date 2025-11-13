@@ -1,163 +1,168 @@
 import { PhoneMockup } from "./PhoneMockup";
-import { ScreenCard } from "./ScreenCard";
-import { IconRow } from "./ui/IconRow";
 import { SearchBar } from "./ui/SearchBar";
 import { PillBadge } from "./ui/PillBadge";
-import { ActionButton } from "./ui/ActionButton";
+import { ScreenCard } from "./ScreenCard";
+import { IconRow } from "./ui/IconRow";
 import { ImageCard } from "./ui/ImageCard";
-import { Plane, Hotel, Car, Ticket, Utensils, MapPin, ArrowRight, Calendar, DollarSign } from "lucide-react";
+import { MapViewScreen } from "./screens/MapViewScreen";
+import { ChatScreen } from "./screens/ChatScreen";
+import { DashboardScreen } from "./screens/DashboardScreen";
+import { PaymentScreen } from "./screens/PaymentScreen";
+import { CalendarScreen } from "./screens/CalendarScreen";
+import { NotificationScreen } from "./screens/NotificationScreen";
+import { Plane, Hotel, MapPin, Calendar, User, Settings } from "lucide-react";
 
 export const FeaturesSection = () => {
   return (
-    <section className="py-20 bg-app-dark">
-      <div className="container mx-auto px-6">
+    <section className="relative py-20 px-6">
+      <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Key Features
           </h2>
-          <p className="text-lg text-white/60 max-w-2xl mx-auto">
-            Everything you need for your perfect journey
+          <p className="text-white/70 text-lg">
+            Everything you need in one beautiful app
           </p>
         </div>
 
-        {/* Phone Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {/* Phone 1 - Search Screen */}
-          <PhoneMockup size="large" delay={0}>
-            <div className="p-6 space-y-6 h-full flex flex-col">
-              <IconRow icons={[Plane, Hotel, Car, Ticket, Utensils]} size={20} spacing="gap-4" />
-              <div className="flex-1 flex flex-col justify-center space-y-4">
+        {/* Bento Grid Layout - Desktop: 4 columns, Tablet: 3 columns, Mobile: 2 columns */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 max-w-[1400px] mx-auto">
+          {/* Row 1 - Hero phone spanning 2 columns */}
+          <div className="col-span-2 row-span-2">
+            <PhoneMockup size="hero" delay={0.1}>
+              <div className="h-full flex flex-col p-6 gap-4">
+                <IconRow icons={[Plane, Hotel, MapPin, Calendar, User]} size={20} spacing="gap-4" />
                 <SearchBar placeholder="Where to?" />
-                <div className="flex gap-2 justify-center">
-                  <PillBadge text="Paris" icon={MapPin} />
-                  <PillBadge text="$599" icon={DollarSign} variant="accent" />
+                <div className="flex gap-2">
+                  <PillBadge text="New York" icon={MapPin} variant="default" />
+                  <PillBadge text="$299" variant="accent" />
                 </div>
-                <button className="w-full h-12 rounded-full bg-white text-app-blue font-semibold">
+                <button className="w-full h-14 bg-gradient-to-r from-app-blue to-app-light-blue rounded-full text-white font-semibold shadow-glow mt-auto">
                   Search Flights
                 </button>
               </div>
-            </div>
-          </PhoneMockup>
-
-          {/* Phone 2 - Card List */}
-          <PhoneMockup size="large" delay={0.1}>
-            <div className="p-4 space-y-4">
-              <div className="flex justify-between items-center text-white px-2">
-                <h3 className="font-bold text-lg">Popular</h3>
-                <button className="text-sm">Filter</button>
-              </div>
-              <ScreenCard>
+            </PhoneMockup>
+          </div>
+          
+          {/* Medium - Map View */}
+          <div className="col-span-1">
+            <PhoneMockup size="medium" delay={0.2}>
+              <MapViewScreen />
+            </PhoneMockup>
+          </div>
+          
+          {/* Small - Notifications */}
+          <div className="col-span-1">
+            <PhoneMockup size="small" delay={0.3}>
+              <NotificationScreen />
+            </PhoneMockup>
+          </div>
+          
+          {/* Row 2 - Small phones */}
+          <div className="col-span-1">
+            <PhoneMockup size="small" delay={0.4}>
+              <div className="h-full p-4 flex flex-col gap-3">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-white text-sm font-semibold">Bookings</h3>
+                  <Settings className="w-4 h-4 text-white/50" />
+                </div>
                 <ImageCard
-                  image="https://images.unsplash.com/photo-1499856871958-5b9627545d1a"
-                  alt="Paris"
-                  badges={["Featured"]}
-                  className="mb-3"
+                  image="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400"
+                  alt="Hotel"
+                  badges={["Confirmed"]}
                 />
-                <div className="space-y-2">
-                  <h4 className="text-white font-semibold">Paris Getaway</h4>
-                  <p className="text-white/60 text-sm">7 days • $1,299</p>
-                  <button className="w-full h-10 rounded-full bg-white/10 text-white text-sm font-medium hover:bg-white/20 transition-colors">
-                    View Details
-                  </button>
+                <div className="bg-white/5 backdrop-blur-sm rounded-xl p-3 border border-white/10">
+                  <p className="text-white text-xs font-medium mb-1">Grand Hotel</p>
+                  <p className="text-white/50 text-xs">Check-in: June 15</p>
                 </div>
-              </ScreenCard>
-            </div>
-          </PhoneMockup>
-
-          {/* Phone 3 - Detail Screen */}
-          <PhoneMockup size="medium" delay={0.2}>
-            <div className="p-4 space-y-4">
-              <div className="flex justify-between items-center text-white">
-                <span className="text-2xl font-bold">✈️</span>
-                <button>⋮</button>
               </div>
-              <div className="text-white space-y-2">
-                <h2 className="text-2xl font-bold">Explore</h2>
-                <p className="text-white/60 text-sm">Discover amazing places</p>
-              </div>
-              <ScreenCard className="aspect-[4/3]">
-                <div className="h-full bg-gradient-to-br from-app-light-blue/20 to-app-blue/20 rounded-lg flex items-center justify-center">
-                  <span className="text-4xl">🏖️</span>
-                </div>
-              </ScreenCard>
-            </div>
-          </PhoneMockup>
-
-          {/* Phone 4 - Booking Form */}
-          <PhoneMockup size="medium" delay={0.3}>
-            <div className="p-4 space-y-4">
-              <IconRow icons={[Plane, Car, Hotel]} size={18} spacing="gap-6" />
-              <div className="text-white space-y-3">
-                <h3 className="font-bold text-lg">Book Your Trip</h3>
-                <div className="space-y-2">
-                  <div className="h-10 bg-white/10 rounded-lg flex items-center px-3">
-                    <Calendar size={16} className="text-white/50 mr-2" />
-                    <span className="text-sm text-white/70">Select dates</span>
+            </PhoneMockup>
+          </div>
+          
+          <div className="col-span-1">
+            <PhoneMockup size="small" delay={0.5}>
+              <PaymentScreen />
+            </PhoneMockup>
+          </div>
+          
+          {/* Row 3 - Dashboard hero (landscape) */}
+          <div className="col-span-2 md:col-span-3 lg:col-span-2">
+            <PhoneMockup size="hero" orientation="landscape" delay={0.6} enable3D={false}>
+              <DashboardScreen />
+            </PhoneMockup>
+          </div>
+          
+          {/* Medium - Calendar */}
+          <div className="col-span-1">
+            <PhoneMockup size="medium" delay={0.7}>
+              <CalendarScreen />
+            </PhoneMockup>
+          </div>
+          
+          {/* Large - Chat */}
+          <div className="col-span-1 row-span-2 hidden lg:block">
+            <PhoneMockup size="large" delay={0.8}>
+              <ChatScreen />
+            </PhoneMockup>
+          </div>
+          
+          {/* Row 4 - Bottom small phones */}
+          <div className="col-span-1">
+            <PhoneMockup size="small" delay={0.9}>
+              <div className="h-full p-4 flex flex-col gap-3">
+                <h3 className="text-white text-sm font-semibold">Profile</h3>
+                <div className="flex flex-col items-center gap-3 flex-1 justify-center">
+                  <div className="w-20 h-20 rounded-full bg-gradient-to-br from-mesh-purple to-mesh-pink" />
+                  <div className="text-center">
+                    <p className="text-white text-sm font-medium">John Doe</p>
+                    <p className="text-white/50 text-xs">Premium Member</p>
                   </div>
-                  <div className="h-10 bg-white/10 rounded-lg flex items-center px-3">
-                    <MapPin size={16} className="text-white/50 mr-2" />
-                    <span className="text-sm text-white/70">Destination</span>
+                  <div className="grid grid-cols-2 gap-2 w-full mt-2">
+                    <div className="bg-white/5 rounded-lg p-2 text-center">
+                      <p className="text-white font-semibold">24</p>
+                      <p className="text-white/50 text-xs">Trips</p>
+                    </div>
+                    <div className="bg-white/5 rounded-lg p-2 text-center">
+                      <p className="text-white font-semibold">18</p>
+                      <p className="text-white/50 text-xs">Cities</p>
+                    </div>
                   </div>
-                  <button className="w-full h-10 rounded-full bg-white text-app-blue font-semibold text-sm">
-                    Search
-                  </button>
                 </div>
               </div>
-            </div>
-          </PhoneMockup>
-
-          {/* Phone 5 - Stats */}
-          <PhoneMockup size="large" delay={0.4}>
-            <div className="p-6 space-y-6">
-              <div className="text-white">
-                <h3 className="font-bold text-xl mb-4">Your Stats</h3>
-                <div className="grid grid-cols-2 gap-4">
-                  <ScreenCard className="p-4 text-center">
-                    <div className="text-3xl font-bold text-white mb-1">12</div>
-                    <div className="text-xs text-white/60">Trips</div>
-                  </ScreenCard>
-                  <ScreenCard className="p-4 text-center">
-                    <div className="text-3xl font-bold text-white mb-1">24</div>
-                    <div className="text-xs text-white/60">Cities</div>
-                  </ScreenCard>
-                  <ScreenCard className="p-4 text-center">
-                    <div className="text-3xl font-bold text-white mb-1">8</div>
-                    <div className="text-xs text-white/60">Countries</div>
-                  </ScreenCard>
-                  <ScreenCard className="p-4 text-center">
-                    <div className="text-3xl font-bold text-white mb-1">156</div>
-                    <div className="text-xs text-white/60">Photos</div>
-                  </ScreenCard>
+            </PhoneMockup>
+          </div>
+          
+          <div className="col-span-1">
+            <PhoneMockup size="medium" delay={1.0}>
+              <div className="h-full p-4 flex flex-col gap-3">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-white text-sm font-semibold">Destinations</h3>
+                  <button className="text-app-light-blue text-xs">View All</button>
                 </div>
-              </div>
-            </div>
-          </PhoneMockup>
-
-          {/* Phone 6 - Profile */}
-          <PhoneMockup size="medium" delay={0.5}>
-            <div className="p-4 space-y-4">
-              <div className="text-center space-y-3">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-app-light-blue to-app-blue mx-auto flex items-center justify-center text-2xl">
-                  👤
-                </div>
-                <div className="text-white">
-                  <h4 className="font-semibold">Travel Explorer</h4>
-                  <p className="text-xs text-white/60">Member since 2024</p>
-                </div>
-              </div>
-              <div className="space-y-2">
-                {['My Trips', 'Favorites', 'Settings'].map((item, i) => (
-                  <div
-                    key={i}
-                    className="h-10 bg-white/10 rounded-lg flex items-center justify-between px-3 text-white text-sm"
-                  >
-                    <span>{item}</span>
-                    <ArrowRight size={16} />
+                <ImageCard
+                  image="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=400"
+                  alt="Paris"
+                  badges={["Popular"]}
+                />
+                <ScreenCard className="flex-1">
+                  <h4 className="text-white text-sm font-medium mb-2">Paris, France</h4>
+                  <p className="text-white/60 text-xs mb-3">The city of lights awaits you</p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-app-light-blue font-semibold">From $599</span>
+                    <button className="px-4 py-2 bg-app-light-blue/20 rounded-full text-white text-xs font-medium">
+                      Explore
+                    </button>
                   </div>
-                ))}
+                </ScreenCard>
               </div>
-            </div>
-          </PhoneMockup>
+            </PhoneMockup>
+          </div>
+          
+          <div className="col-span-1 lg:hidden">
+            <PhoneMockup size="small" delay={1.1}>
+              <ChatScreen />
+            </PhoneMockup>
+          </div>
         </div>
       </div>
     </section>
