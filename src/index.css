@@ -44,6 +44,11 @@ All colors MUST be HSL.
     --dark-bg: 230 35% 7%;
     --dark-surface: 230 30% 10%;
     --glass-bg: 230 30% 15%;
+    
+    --app-dark: 220 45% 7%;
+    --app-navy: 220 65% 25%;
+    --app-blue: 217 91% 60%;
+    --app-light-blue: 213 94% 68%;
 
     --sidebar-background: 0 0% 98%;
 

@@ -24,6 +24,10 @@ export default {
         'dark-bg': 'hsl(var(--dark-bg))',
         'dark-surface': 'hsl(var(--dark-surface))',
         'glass-bg': 'hsl(var(--glass-bg))',
+        'app-dark': 'hsl(var(--app-dark))',
+        'app-navy': 'hsl(var(--app-navy))',
+        'app-blue': 'hsl(var(--app-blue))',
+        'app-light-blue': 'hsl(var(--app-light-blue))',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -72,6 +76,13 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      backdropBlur: {
+        'glass': '20px',
+      },
+      boxShadow: {
+        'phone': '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
+        'glow': '0 0 30px rgba(59, 130, 246, 0.3)',
       },
       keyframes: {
         "accordion-down": {
