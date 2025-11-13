@@ -23,10 +23,10 @@ export const ActionButton = ({
       whileTap={{ scale: 0.95 }}
       onClick={onClick}
       className={cn(
-        "rounded-full flex items-center justify-center gap-2 font-medium transition-all",
+        "rounded-full flex items-center justify-center gap-2 font-medium transition-all font-orbitron",
         variant === "primary"
-          ? "bg-gradient-to-r from-app-blue to-app-light-blue text-white shadow-glow"
-          : "bg-white text-app-blue shadow-lg",
+          ? "bg-gradient-to-r from-primary to-neon-blue text-primary-foreground shadow-glow"
+          : "bg-foreground text-background shadow-lg",
         size === "small" ? "h-12 w-12" : label ? "h-14 px-6" : "h-14 w-14"
       )}
     >

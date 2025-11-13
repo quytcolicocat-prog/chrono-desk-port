@@ -82,7 +82,7 @@ export const PhoneMockup = ({
         transformStyle: "preserve-3d",
       } : {}}
       className={cn(
-        "relative rounded-[32px] bg-gradient-to-b from-gray-900 to-gray-800 p-2 transition-all duration-300",
+        "relative rounded-[32px] bg-gradient-to-b from-dark-surface to-dark-bg p-2 transition-all duration-300",
         isHovered ? "shadow-phone-3d" : "shadow-phone-lg",
         orientation === "portrait" ? sizeClasses[size] : landscapeSizeClasses[size],
         className
@@ -90,11 +90,11 @@ export const PhoneMockup = ({
     >
       {/* Notch (only for portrait) */}
       {orientation === "portrait" && (
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-6 bg-gray-900 rounded-b-3xl z-10" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-6 bg-dark-bg rounded-b-3xl z-10" />
       )}
       
       {/* Screen */}
-      <div className="relative h-full w-full rounded-[24px] bg-gradient-to-br from-app-navy to-app-blue overflow-hidden">
+      <div className="relative h-full w-full rounded-[24px] bg-gradient-to-br from-dark-surface to-primary/20 overflow-hidden">
         <motion.div 
           className="h-full w-full"
           animate={isHovered ? { scale: 1.02 } : { scale: 1 }}
@@ -105,7 +105,7 @@ export const PhoneMockup = ({
         
         {/* Home Indicator */}
         <div className={cn(
-          "absolute bg-white/30 rounded-full",
+          "absolute bg-foreground/30 rounded-full",
           orientation === "portrait" 
             ? "bottom-2 left-1/2 -translate-x-1/2 w-20 h-1" 
             : "right-2 top-1/2 -translate-y-1/2 h-20 w-1"
